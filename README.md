@@ -1,18 +1,82 @@
 # PingSweep
 
-PingSweep is a Python script that runs a pings to determine how many hosts are up on a specified subnet. This script will also run a DNS lookup to find host names if they are available.
+A Python script that runs a pings to determine how many hosts are up on a specified subnet. This script will also run a DNS lookup to find host names if they are available.
 
 ## Installation
 
-1. Clone the repository:
+This method of installation uses creates a virtual environment, installs requires modules and packges, then clones the git repository.
+
+### Requirements
+
+Python is required and can be downloaded at - https://www.python.org/
+GitHub account - https://github.com
+Git - https://git-scm.com/
+
+### Installing Git
+> Git is required to clone the repository from GitHub
+
+Git can be installed with 'winget' which is usually installed by default in Windows.
+```sh
+winget install --id Git.Git -e --source winget
+```
+If 'winget' is not installed, it can be installed from the Microsoft Store.
+
+### Setting up script for Windows
+> Example here uses PowerShell
+
+Install 'virtualenv' module
+```sh
+pip install virtualenv
+```
+Create folder to store virtual environments
+```sh
+cd ~
+mkdir .venvs
+```
+Create and activate virutal environment
+```sh
+cd .venvs
+python -m virtualenv pingsweep --prompt pingsweep
+cd .\pingsweep\Scripts
+.\activate
+```
+Clone git repository
+```sh
+cd ~
+mkdir python_projects #optionally you can create a folder to store project
+cd python_projects
+git clone git@github.com:jzmack/pingsweep.git
+```
+### Setting up script for Linux/Mac
+> Example here is for a Debian based system.
+
+Install required apt packages for virtual environment
+```sh
+sudo apt update
+sudo apt install python3-pip
+sudo apt install python3-virtualenv
+```
+Create a folder to store virtual environments
+```sh
+cd ~
+mkdir .venvs
+cd .venvs
+```
+Create virtual environment
+```sh
+python3 -m virtualenv pingsweep --prompt pingsweep
+source /pingsweep/bin/activate
+```
+Install the required dependencies in virtual environment:
+```sh
+pip install -r requirements.txt
+```
+Clone the repository into the virtual environment
 ```sh
 git clone git@github.com:jzmack/pingsweep.git
 cd pingsweep
 ```
-2. Install the required dependencies:
-```sh
-pip install -r requirements.txt
-```
+
 ## Usage
 
 Running the script:
