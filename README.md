@@ -4,9 +4,9 @@ This method of installation uses creates a virtual environment, installs require
 
 ### Requirements
 
-Python is required and can be downloaded at - https://www.python.org/
-GitHub account - https://github.com
-Git - https://git-scm.com/
+- Python is required and can be downloaded at - https://www.python.org/
+- GitHub account - https://github.com
+- Git - https://git-scm.com/
 
 ### Installing Git
 > Git is required to clone the repository from GitHub
