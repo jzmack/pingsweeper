@@ -31,6 +31,11 @@ You can also specify the timeout and the number (count) of packets to send:
 ```sh
 python pingsweep.py -s 192.168.1.0/24 -t 0.5 -c 3
 ```
+
+## Known Issues
+
+This script was originally designed for Windows and usage on Linux/Mac systems is currently limited.
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
