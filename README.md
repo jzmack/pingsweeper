@@ -1,7 +1,3 @@
-# PingSweep
-
-A Python script that runs a pings to determine how many hosts are up on a specified subnet. This script will also run a DNS lookup to find host names if they are available.
-
 ## Installation
 
 This method of installation uses creates a virtual environment, installs requires modules and packges, then clones the git repository.
@@ -100,4 +96,3 @@ python pingsweep.py -s 192.168.1.0/24 -t 0.5 -c 3
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Feel free to customize the `README.md` file to better suit your project's needs. If you have any more questions or need further assistance, let me know!
-
