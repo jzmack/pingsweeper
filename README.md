@@ -1,3 +1,11 @@
+# PingSweep
+
+A Python script that runs a pings to determine how many hosts are up on a specified subnet. This script will also run a DNS lookup to find host names if they are available.
+
+## Known Issues
+
+This script was originally designed for Windows and usage on Linux/Mac systems is currently limited.
+
 ## Installation
 
 This method of installation uses creates a virtual environment, installs requires modules and packges, then clones the git repository.
@@ -5,20 +13,16 @@ This method of installation uses creates a virtual environment, installs require
 ### Requirements
 
 - Python is required and can be downloaded at - https://www.python.org/
-- GitHub account - https://github.com
 - Git - https://git-scm.com/
-
-### Installing Git
-> Git is required to clone the repository from GitHub
-
-Git can be installed with 'winget' which is usually installed by default in Windows.
-```sh
-winget install --id Git.Git -e --source winget
-```
-If 'winget' is not installed, it can be installed from the Microsoft Store.
 
 ### Setting up script for Windows
 > Example here uses PowerShell
+
+Installing Git for cloning of repository. 
+```sh
+winget install --id Git.Git -e --source winget
+```
+> If 'winget' is not installed, it can be installed from the Microsoft store.
 
 Install 'virtualenv' module
 ```sh
