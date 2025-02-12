@@ -1,28 +1,29 @@
 # PingSweep
 
-A Python script that runs a pings to determine how many hosts are up on a specified subnet. This script will also run a DNS lookup to find host names if they are available.
+A Python script that runs pings to determine how many hosts are up on a specified subnet. This script will also run a DNS lookup to find host names if they are available.
 
 ## Known Issues
 
-This script was originally designed for Windows and usage on Linux/Mac systems is currently limited.
+This script was originally designed for Windows and its functionality on Linux/Mac systems is currently limited.
 
 ## Installation
 
-This method of installation uses creates a virtual environment, installs required modules and packges, then clones the git repository.
+This method of installation uses creates a virtual environment, installs required modules and packages, then clones the git repository. You'll need an SSH key in order to clone the repository. 
 
 ### Requirements
 
-- Python is required and can be downloaded at - https://www.python.org/
+- Python - https://www.python.org
 - Git - https://git-scm.com/
+- GitHub ssh key - https://docs.github.com/en/authentication/connecting-to-github-with-ssh
 
 ### Setting up script for Windows
-> Example here uses PowerShell.
+> Example here uses PowerShell. Python can be installed from the Microsoft store.
 
 Installing Git for cloning of repository:
 ```sh
 winget install --id Git.Git -e --source winget
 ```
-> If 'winget' is not installed, it can be installed from the Microsoft store.
+> If `winget` is not installed, it can be installed from the Microsoft store.
 
 Install 'virtualenv' module:
 ```sh
@@ -33,7 +34,7 @@ Create folder to store virtual environments:
 cd ~
 mkdir .venvs
 ```
-Create and activate virutal environment:
+Create and activate virtual environment:
 ```sh
 cd .venvs
 python -m virtualenv pingsweep --prompt pingsweep
@@ -47,10 +48,15 @@ mkdir python_projects #optionally you can create a folder to store project
 cd python_projects
 git clone git@github.com:jzmack/pingsweep.git
 ```
+Install necesarry Python modules:
+```sh
+pip install -r requirements.txt
+```
+
 ### Setting up script for Linux/Mac
 > Example here is for a Debian based system.
 
-Install required apt packages for virtual environment:
+Install required APT packages for virtual environment:
 ```sh
 sudo apt update
 sudo apt install python3-pip
@@ -65,7 +71,7 @@ cd .venvs
 Create virtual environment:
 ```sh
 python3 -m virtualenv pingsweep --prompt pingsweep
-source /pingsweep/bin/activate
+source pingsweep/bin/activate
 ```
 Install the required dependencies in virtual environment:
 ```sh
@@ -87,14 +93,13 @@ Run to show available arguments:
 ```sh
 python pingsweep.py -h
 ```
-Run the script with the desired subnet in CIDR notation:
-```sh
-python pingsweep.py -s 192.168.1.0/24
-```
-You can also specify the timeout and the number (count) of packets to send:
 ```sh
 python pingsweep.py -s 192.168.1.0/24 -t 0.5 -c 3
 ```
+ - `-s` → Specifies the subnet in CIDR notation.
+ - `-t` → Sets the timeout per ping (in seconds).
+ - `-c` → Specifies the number of packets to send per host.
+ 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
