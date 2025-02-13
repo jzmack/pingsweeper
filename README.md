@@ -18,15 +18,15 @@ Script can be installed using `pip install pingsweeper`
 
 Running the script:
 ```sh
-python pingsweep.py
+pingsweeper
 ```
 To show available arguments:
 ```sh
-python pingsweep.py -h
+pingsweeper -h
 ```
 Example with all available arguments:
 ```sh
-python pingsweep.py -s 192.168.1.0/24 -t 0.5 -c 3
+pingsweeper -s 192.168.1.0/24 -t 0.5 -c 3
 ```
  - `-s` → Specifies the subnet in CIDR notation.
  - `-t` → Sets the timeout per ping (in seconds).
