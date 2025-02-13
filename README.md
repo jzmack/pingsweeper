@@ -19,16 +19,15 @@ This method of installation creates a virtual environment, installs required mod
 ### Setting up script for Windows
 > Example here uses PowerShell. Python can be installed from the Microsoft store.
 
-Installing Git for cloning of repository:
+Installing Git for cloning the repository:
 ```sh
 winget install --id Git.Git -e --source winget
 ```
 > If `winget` is not installed, it can be installed from the Microsoft store.
-
-> If you've never pulled from GitHub, you'll need to create a GitHub account, generate and SSH key, and add the Key to your account's SSH key store.
+> If you've never pulled from GitHub, you'll need to create a GitHub account, generate an SSH key, and add the Key to your account's SSH key store.
 
 #### Git setup after GitHub account is created:
-Generate a new SSH key. Enter a passphrase and press enter to store in default location which is usually C:\Users\user_name\.ssh
+Generate a new SSH key. Enter a passphrase and press enter to store it in the default location which is usually C:\Users\user_name\.ssh
 ```sh
 ssh-keygen.exe -t ed25519 -C "your_email@example.com" # replace with your email
 ```
@@ -59,7 +58,7 @@ mkdir python_projects #optionally you can create a folder to store project
 cd python_projects
 git clone git@github.com:jzmack/pingsweep.git
 ```
-Install necesarry Python modules:
+Install the necesarry Python modules:
 ```sh
 pip install -r requirements.txt
 ```
@@ -68,7 +67,7 @@ Python files are located in the `main` folder
 ### Setting up script for Linux/Mac
 > Example here is for a Debian based system.
 
-Install required APT packages for virtual environment:
+Install required APT packages for the virtual environment:
 ```sh
 sudo apt update
 sudo apt install python3-pip
