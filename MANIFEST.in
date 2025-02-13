@@ -1,0 +1,19 @@
+include README.md
+include LICENSE
+include setup.py
+include MANIFEST.in
+include requirements.txt
+
+# Include the main package
+recursive-include main *.py
+
+# Include tests
+recursive-include test *.py
+
+# Include documentation
+recursive-include docs *
+
+# Exclude build and distribution directories
+exclude build/*
+exclude dist/*
+exclude *.egg-info/*
