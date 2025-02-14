@@ -3,37 +3,62 @@ import concurrent.futures
 import sys
 import os
 import subprocess
+import platform
 import argparse
 from ipaddress import ip_network, AddressValueError
 from datetime import datetime
 #external modules
-from pythonping import ping
 from tqdm import tqdm
 
-#to check if script has elevated permissions
-def is_elevated():
-    try:
-        if os.name == "nt":  #Windows
-            return True
-        else:  #Linux/unix, macOS
-            euid = os.geteuid()
-            if euid != 0:  #not root
-                print(f"Effective User ID(Unix-like): {euid}")
-            return euid == 0
-    except Exception as e:
-        print(f"Error checking elevated permissions: {e}")
-        return False
+#checking OS
+def get_os_type():
+    os_type = platform.system()
+    if os_type == "Windows":
+        return "Windows"
+    else:
+        return "Unix"
 
 #function to run a ping
 def pinger(ip, count, timeout):
     ip_str = str(ip)
-    response = ping(ip_str, count=count, timeout=timeout)
-    response_time = response.rtt_avg_ms
-    if response.success and response.packet_loss == 0:
-        hostname = nslookup(ip_str)
-        return f"Ping... {ip_str} - {hostname} - Status: UP - Response time: {response_time} ms", True
-    else:
-        return f"Ping... {ip_str} - Status: DOWN - No Response", False
+    os_type = get_os_type()
+    try:
+        if os_type == "Windows":
+            response = subprocess.run(
+                ["ping", "-n", str(count), "-w", str(timeout * 1000), ip_str],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+        else: #for Unix
+            response = subprocess.run(
+                ["ping", "-c", str(count), "-W", str(timeout), ip_str],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+        #parse to get average response time
+        if response.returncode == 0:
+            response_time = None
+            if os_type == "Windows":
+                for line in response.stdout.split('\n'):
+                    if "Average = " in line:
+                        response_time = line.split("Average = ")[-1].strip()
+                        break
+            else:
+                for line in response.stdout.split('\n'):
+                    if "rtt min/avg/max/mdev" in line:
+                        response_time = line.split('=')[1].split('/')[1].strip()
+                        break
+            if response_time:
+                hostname = nslookup(ip_str)
+                return f"Ping...{ip_str} - {hostname} - Status: UP - Response time: {response_time}", True
+            else:
+                return f"Ping... {ip_str} - Status: DOWN - No Response", False
+        else:
+            return f"Ping... {ip_str} - Status: DOWN - No Response", False
+    except Exception as e:
+        return f"Ping... {ip_str} - Status: DOWN - Error: {str(e)}", False
 
 #function to run nslookup
 def nslookup(ip_address):
@@ -77,18 +102,20 @@ def ping_sweeper(sweep_subnet, batch_size, timeout, count):
     hosts_respond = f"Number of Responses: {total_up}"
 
     print(hosts_pinged)
-    tqdm.write(hosts_respond) #print statement
+    print(hosts_respond)
     print("\n".join(hosts_up))
 
     all_results.append(hosts_pinged)
     all_results.append(hosts_respond)
 
     #creating a new directory and text file with results
-    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
+    clean_timestamp = datetime.now().strftime("%m/%d/%Y - %H:%M")
     if not os.path.exists("sweep_results"):
         os.makedirs("sweep_results")
     text_file = f"sweep_results/sweep_results_{timestamp}.txt"
     with open(text_file, "w") as f:
+        f.write(f"TIMESTAMP: {clean_timestamp}" + "\n" + "\n")
         f.write(hosts_pinged)
         f.write("\n" + hosts_respond + "\n" + "\n")
         for result in all_results:
@@ -98,10 +125,14 @@ def ping_sweeper(sweep_subnet, batch_size, timeout, count):
     if os.name == "nt": #Windows
         subprocess.Popen(["notepad", f"sweep_results/sweep_results_{timestamp}.txt"])
     elif os.name =="posix":
-        if sys.platform == "darwin": #macOS
-            subprocess.Popen(["open", f"sweep_results/sweep_results_{timestamp}.txt"])
-        else:
-            subprocess.Popen(["xdg-open", f"sweep_results/sweep_results_{timestamp}.txt"]) #Linux/unix
+        try:
+            if sys.platform == "darwin": #macOS
+                subprocess.Popen(["open", f"sweep_results/sweep_results_{timestamp}.txt"])
+            else:
+                subprocess.Popen(["xdg-open", f"sweep_results/sweep_results_{timestamp}.txt"]) #Linux/unix
+        except Exception as e:
+            print(f"Could not open file text file. {e}")
+            print("Results are saved at sweep_results/")
     sys.exit()
 
 #to batch the IP addresses
@@ -110,6 +141,7 @@ def batch_ips(sweep_subnet, batch_size):
     for i in range(0, len(sweep_list), batch_size):
         yield sweep_list[i:i + batch_size]
 
+#function to get network from user
 def get_user_input(prompt):
     try:
         while True:
@@ -142,11 +174,7 @@ def main():
         ping_sweeper(sweep_subnet, timeout=args.timeout, count=args.count, batch_size=batch_size)
     except Exception as e:
         print(f"Error: {e}")
-        print("Try again.")
 
 #running the program
 if __name__ == "__main__":
-    if is_elevated():
-        main()
-    else:
-        print("Script requires elevated permissions to run.")
+    main()
