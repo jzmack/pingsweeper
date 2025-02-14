@@ -10,6 +10,8 @@ Script can be installed using `pip install pingsweeper`
 
 - Python - https://www.python.org
 
+![Demo](docs/install_demo.gif)
+
 ## Usage
 
 Running the script:
