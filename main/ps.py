@@ -139,10 +139,9 @@ def main():
         return
     batch_size = 50
     try:
-        ping_sweeper(sweep_subnet,timeout=args.timeout, count=args.count, batch_size=batch_size)
+        ping_sweeper(sweep_subnet, timeout=args.timeout, count=args.count, batch_size=batch_size)
     except Exception as e:
         print(f"Error: {e}")
-        print("Try again.")
 
 #running the program
 if __name__ == "__main__":
