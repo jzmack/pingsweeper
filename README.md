@@ -30,6 +30,17 @@ pingsweeper -s 192.168.1.0/24 -t 0.5 -c 3
 
 Once the script completes, the console will print a summary including the number of hosts ping, hosts that responded, and the results of all the hosts that were UP. A text file with the results will be generated at `sweep_results/` and opened (assuming the system has a GUI).
 
+## Upgrading
+
+To upgrade to the latest version:
+```shell
+python -m pip install --upgrade pingsweeper
+```
+To install a specific version:
+```shell
+python pip install pingsweeper==0.1.0
+```
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
