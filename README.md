@@ -53,5 +53,3 @@ There have been cases where the following warning may be shown after installing 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-Feel free to customize the `README.md` file to better suit your project's needs. If you have any more questions or need further assistance, let me know!
