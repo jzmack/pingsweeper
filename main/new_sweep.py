@@ -18,7 +18,10 @@ def get_os_type():
 async def pinger(ip, count, timeout):
     ip_str = str(ip_address(ip))
     os_type = get_os_type()
-    command = ["ping", "-c" if os_type != "Windows" else "-n", str(count), "-W" if os_type != "Windows" else "-w", str(timeout if os_type != "Windows" else timeout * 1000), ip_str]
+    command = ["ping",
+               "-c" if os_type != "Windows" else "-n", str(count),
+               "-W" if os_type != "Windows" else "-w", str(timeout if os_type != "Windows" else timeout * 1000),
+               ip_str]
 
     try:
         process = await asyncio.create_subprocess_exec(*command, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
@@ -102,6 +105,7 @@ async def ping_sweeper(ip_list, batch_size, timeout, count):
 
 # function to save results to a text file and open it
 def save_results(all_results, hosts_pinged, host_respond):
+    os_type = get_os_type()
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
     clean_timestamp = datetime.now().strftime("%m/%d/%Y - %H:%M")
     if not os.path.exists("sweep_results"):
@@ -113,7 +117,6 @@ def save_results(all_results, hosts_pinged, host_respond):
         f.write(f"{hosts_pinged}")
         f.write(f"\n{host_respond}\n\n")
         f.write("\n".join(all_results))
-
     open_results_file(text_file)
 
 # function to open results file based on OS
@@ -127,7 +130,7 @@ def open_results_file(file_path):
             else:
                 subprocess.Popen(["xdg-open", file_path])  # Linux/unix
     except Exception as e:
-        print(f"Could not open text file. {e}")
+        print(f"\nCould not open text file. No GUI.\n")
         print("Results are saved at sweep_results/")
 
 # function to get network from user
@@ -183,12 +186,15 @@ def main():
     except (ValueError, AddressValueError) as e:
         print(f"Invalid input {e}")
         return
-    batch_size = 100
-    try:
-        asyncio.run(ping_sweeper(ip_list, timeout=args.timeout, count=args.count, batch_size=batch_size))
-    except Exception as e:
-        print(f"Error: {e}")
 
-# running the program
+    batch_size = 10
+    start_time = time.perf_counter() #timer
+
+    asyncio.run(ping_sweeper(ip_list, timeout=args.timeout, count=args.count, batch_size=batch_size)) #does all the work
+
+    end_time = time.perf_counter()
+    execution_time = end_time - start_time
+    print(f"Script run time: {execution_time:.2f} seconds...")
+
 if __name__ == "__main__":
     main()
