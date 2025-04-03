@@ -28,7 +28,6 @@ Example with all available arguments:
 pingsweeper -s 192.168.1.0/24 -t 0.5 -c 3
 ```
  - `-s` → Specifies the subnet in CIDR notation.
- - `-r` → Prompt for a range instead of entire subnet.
  - `-t` → Sets the timeout per ping (in seconds).
  - `-c` → Specifies the number of packets to send per host.
 
@@ -48,7 +47,7 @@ python pip install pingsweeper==0.1.1
 
 There have been cases where the following warning may be shown after installing the package which will not allow you to run `pingsweeper` as intended. If this is the case, then the file path highlighted will need added to the system PATH environment variable.
 
-![img.png](img.png)
+![Image](https://github.com/user-attachments/assets/c26eb4fd-1f63-47ac-9fb0-cad1d00fccc9)
 
 ## License
 

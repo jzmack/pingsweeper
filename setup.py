@@ -2,12 +2,12 @@ from setuptools import setup, find_packages
 
 setup(
     name="pingsweeper",
-    version="0.1.1",
+    version="0.1.3",
     packages=find_packages(),
-    install_requires=["tqdm", "colorama"],
+    install_requires=[""],
     entry_points={
         'console_scripts': [
-            'pingsweeper=main.pingsweep:main',
+            'pingsweeper=main.new_sweep:main',
         ],
     },
     author="Jacob Mackin",
