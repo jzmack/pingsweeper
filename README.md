@@ -2,16 +2,27 @@
 
 A Python script that runs pings to determine how many hosts are up on a specified subnet. This script will also run a DNS lookup to find host names if they are available.
 
+![Demo](docs/install_demo.gif)
+
 ## Installation
 
 Script can be installed using `pip install pingsweeper`
 
+### On Linux
+
+Install in a virtual environment:
+```sh
+sudo apt update
+sudo apt install python3-venv python3-pip
+python3 -m venv .psvenv
+source .psvenv/bin/activate
+pip install pingsweeper
+```
+
 ### Requirements
 
 - Python - https://www.python.org
-> Note: the script will need to be in the PATH environment variable to work as demonstrated here
-
-![Demo](docs/install_demo.gif)
+> Note: On Windows, the script will need to be in the PATH environment variable to work as demonstrated here.
 
 ## Usage
 
