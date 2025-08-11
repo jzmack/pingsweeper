@@ -1,8 +1,8 @@
-<img src="docs/pingsweeper_icon_with_text.png" alt="PingSweeper Icon" width="400" height="400">
+## Pingsweeper <img src="docs/pingsweeper_icon.png" alt="PingSweeper Icon" width="25" height="25">
 
-A flexible CLI tool built with Python designed to ping an entire IP subnet and return quick results.
+A flexible CLI tool built with Python designed to ping an entire IP subnet and return quick results. This can be used as a standalone script or in conjuction with other automation tools. Output can be in plain text, CSV, or JSON.
 
-> Demo gif coming soon here
+![Demo of the tool being installed and run](docs/demo.gif)
 
 ##  Features
 
