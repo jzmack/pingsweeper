@@ -1,4 +1,4 @@
-![PingSweeper Icon](docs/pingsweeper_icon_with_text.png)
+<img src="docs/pingsweeper_icon_with_text.png" alt="PingSweeper Icon" width="400" height="400">
 
 A flexible CLI tool built with Python designed to ping an entire IP subnet and return quick results.
 
