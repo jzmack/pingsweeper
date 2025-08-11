@@ -7,7 +7,7 @@ A flexible CLI tool built with Python designed to ping an entire IP subnet and r
 ##  Features
 
 ### 🚀 **Performance**
-- ⚡ **Fast Scans** - Scans a /24 subnet (254 hosts) in under 2 seconds
+- ⚡ **Fast Scans** - Sweeps a /24 subnet (254 hosts) and returns results in just seconds
 - 🎛️ **Configurable Concurrency** - Adjust concurrent connections (default: 100) to optimize for pinging larger networks
 - ⏱️ **Customizable Timeouts** - Fine-tune ping timeouts for speed vs accuracy balance
 
@@ -133,6 +133,10 @@ python pip install pingsweeper==0.1.1
 There have been cases where the following warning may be shown after installing the package which will not allow you to run `pingsweeper` as intended. If you see this warning during install, you may have to add Python to yout PATH environement variable. Or you may have to add the file path (highlighted in the image below) where you have Python packages installed to to your PATH.
 
 ![Image](https://github.com/user-attachments/assets/c26eb4fd-1f63-47ac-9fb0-cad1d00fccc9)
+
+## TO DO
+- Add option to direct where to save results
+- Add functionality to sweep many subnets
 
 ## License
 
