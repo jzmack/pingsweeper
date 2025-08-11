@@ -1,4 +1,4 @@
-# PingSweeper
+![PingSweeper Icon](docs/pingsweeper_icon_with_text.png)
 
 A flexible CLI tool built with Python designed to ping an entire IP subnet and return quick results.
 
