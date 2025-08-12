@@ -130,7 +130,7 @@ python pip install pingsweeper==0.1.1
 
 ## Possible issues
 
-There have been cases where the following warning may be shown after installing the package which will not allow you to run `pingsweeper` as intended. If you see this warning during install, you may have to add Python to yout PATH environement variable. Or you may have to add the file path (highlighted in the image below) where you have Python packages installed to to your PATH.
+There have been cases where the following warning may be shown after installing the package which will not allow you to run `pingsweeper` as intended. If you see this warning during install, you may have to add Python scripts directory (highlighted below) to your PATH variable.
 
 ![Image](https://github.com/user-attachments/assets/c26eb4fd-1f63-47ac-9fb0-cad1d00fccc9)
 
