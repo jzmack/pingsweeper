@@ -31,8 +31,6 @@ A flexible CLI tool built with Python designed to quickly ping many devices to s
 ### 🔧 **Advanced Configuration**
 - 🎚️ **Customizable Ping Count** - Send multiple packets per host for accuracy
 - ⏲️ **Timeout Control** - Per-ping timeout configuration
-- 🤫 **Quiet Mode** - Silence output for scripting
-- 🔍 **Verbose Debugging** - Detailed logging for troubleshooting
 - 📊 **Progress Control** - Option to hide the progress bar that I worked so hard on
 
 ### 🖥️ **Cross-Platform Compatibility**
@@ -95,8 +93,8 @@ pingsweeper -s 192.168.1.0/24 -t 0.5 -c 3 --csv --max-concurrent 50
 - `--csv` → Save results as CSV file  
 - `--json` → Save results as JSON file
 - `--no-progress` → Disable progress bar
-- `--quiet` → Show only summary results
-- `--verbose` → Enable detailed debugging output
+- `--quiet` → Coming soon... Show only summary results
+- `--verbose` → Coming soon... Enable detailed debugging output
 
 ###  **Usage Examples**
 
@@ -137,6 +135,7 @@ There have been cases where the following warning may be shown after installing 
 ## TO DO
 - Add option to direct where to save results
 - Add functionality to sweep many subnets
+- Add options for quiet and verbose output
 
 ## License
 

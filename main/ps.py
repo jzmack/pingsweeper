@@ -359,9 +359,9 @@ Examples:
     parser.add_argument("--no-progress", action="store_true", 
                        help="Disable progress bar")
     parser.add_argument("--quiet", "-q", action="store_true", 
-                       help="Only show summary, suppress individual results")
+                       help="Coming soon... Only show summary, suppress individual results")
     parser.add_argument("--verbose", "-v", action="store_true", 
-                       help="Enable verbose output for debugging")
+                       help="Coming soon... Enable verbose output for debugging")
     
     args = parser.parse_args()
     
