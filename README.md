@@ -4,45 +4,45 @@ A flexible CLI tool built with Python designed to quickly ping many devices to s
 
 ![Demo of the tool being installed and run](docs/new_demo.gif)
 
-##  Features
+##  Features 🚀
 
-### 🚀 **Performance**
-- ⚡ **Fast Scans** - Sweeps a /24 subnet (254 hosts) and returns results in just seconds
-- 🎛️ **Configurable Concurrency** - Adjust concurrent connections (default: 100) to optimize for pinging larger networks
-- ⏱️ **Customizable Timeouts** - Fine-tune ping timeouts for speed vs accuracy balance
+###  **Performance**
+-  **Fast Scans** - Sweeps a /24 subnet (254 hosts) and returns results in just seconds
+-  **Configurable Concurrency** - Adjust concurrent connections (default: 100) to optimize for pinging larger networks
+-  **Customizable Timeouts** - Fine-tune ping timeouts for speed vs accuracy balance
 
-### 📊 **Output**
-- 📈 **Stats** - Success rates, response times, and summaries  
-- 🎯 **Progress Tracking** - Unicode progress bars with real-time completion status
-- 🏠 **Hostname Resolution** - Automatic reverse DNS lookups for discovered hosts
-- 📋 **Supported Output Formats**:
-  - 📄 **Text files** (`--txt`) - for reports, something human readable
-  - 📊 **CSV files** (`--csv`) - just because, maybe for spreadsheet analysis idk
-  - 🔗 **JSON files** (`--json`) - Structured data for automation and APIs
+###  **Output**
+-  **Stats** - Success rates, response times, and summaries  
+-  **Progress Tracking** - Unicode progress bars with real-time completion status
+-  **Hostname Resolution** - Automatic reverse DNS lookups for discovered hosts
+-  **Supported Output Formats**:
+  -  **Text files** (`--txt`) - for reports, something human readable
+  -  **CSV files** (`--csv`) - just because, maybe for spreadsheet analysis idk
+  -  **JSON files** (`--json`) - Structured data for automation and APIs
 
-### ⌨️ **Multiple Input Options**
-- 🌐 **Supported IP Formats**:
+###  **Multiple Input Options**
+-  **Supported IP Formats**:
   - Single IP: `192.168.1.1`
   - CIDR Notation: `192.168.1.0/24`
   - IP Ranges: `192.168.1.1-192.168.1.50`
-- ✅ **Input Validation** - Error checking with "helpful" guidance
-- 🛡️ **Large Network Protection** - Warns before scanning massive networks
+-  **Input Validation** - Error checking with "helpful" guidance
+-  **Large Network Protection** - Warns before scanning massive networks
 
-### 🔧 **Advanced Configuration**
-- 🎚️ **Customizable Ping Count** - Send multiple packets per host for accuracy
-- ⏲️ **Timeout Control** - Per-ping timeout configuration
-- 📊 **Progress Control** - Option to hide the progress bar that I worked so hard on
+###  **Advanced Configuration**
+-  **Customizable Ping Count** - Send multiple packets per host for accuracy
+-  **Timeout Control** - Per-ping timeout configuration
+-  **Progress Control** - Option to hide the progress bar that I worked so hard on
 
-### 🖥️ **Cross-Platform Compatibility**
-- 🪟 **Windows** - Native support with Windows Terminal optimization
-- 🐧 **Linux/Unix** - Full compatibility including WSL
-- 🍎 **macOS** - I didn't test it but I'm sure it works right?
-- 🔄 **Automatic OS Detection** - Uses appropriate ping commands for each platform
+###  **Cross-Platform Compatibility**
+-  **Windows** - Native support with Windows Terminal optimization
+-  **Linux/Unix** - Full compatibility including WSL
+-  **macOS** - I didn't test it but I'm sure it works right?
+-  **Automatic OS Detection** - Uses appropriate ping commands for each platform
 
-### 📁 **Organized Results Management**
-- 📂 **Automatic Directory Creation** - Results saved to `sweep_results/` folder
-- 🕒 **Timestamped Files** - Each scan gets a unique timestamp
-- 💾 **Optional File Saving** - Save results only if you want to
+###  **Organized Results Management**
+-  **Automatic Directory Creation** - Results saved to `sweep_results/` folder
+-  **Timestamped Files** - Each scan gets a unique timestamp
+-  **Optional File Saving** - Save results only if you want to
 
 
 ## Installation
